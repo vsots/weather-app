@@ -18,13 +18,9 @@ function App() {
         <h1>Find Your Weather</h1>
         <form
           onSubmit={(e) => {
-            e.preventDefault(); // Do not want to do full form submit as that refreshes page
-            // requestPets();
-            const formData = new FormData(e.currentTarget); // browser api, not react
-            // const obj = {
-            //   location: formData.get("location") as string ?? ""
-            // };
-            setRequestParams(formData.get("location") as string ?? "Novato");
+            e.preventDefault();
+            const formData = new FormData(e.currentTarget);
+            setRequestParams(formData.get("location") as string ?? "");
           }}
         >
           <label htmlFor="location">
