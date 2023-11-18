@@ -4,3 +4,9 @@
   padding: 2rem;
   text-align: center;
 }
+
+.input {
+  position: fixed;
+  left: 33%;
+  top: 0;
+}
