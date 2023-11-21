@@ -1,4 +1,6 @@
-async function fetchWeather({ queryKey }) {
+import { QueryFunction } from "@tanstack/react-query";
+
+const fetchWeather: QueryFunction = async ({ queryKey }) => {
   const location = queryKey[1];
   const API_KEY = "YOUR_TOMORROW.IO_API_KEY"
   const res = await fetch(
