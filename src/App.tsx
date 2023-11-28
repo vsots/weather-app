@@ -43,14 +43,14 @@ function App() {
             <Link to="/daily"> Daily </Link>
             <Link to="/hourly"> Hourly </Link>
             <Link to="/minutely"> Minutely </Link>
+            <Routes>
+              <Route path="/" element={<></>} />
+              <Route path="/daily" element={<WeatherData data={data?.timelines?.daily} type={"Daily"} />} />
+              <Route path="/hourly" element={<WeatherData data={data?.timelines?.hourly} type={"Hourly"} />} />
+              <Route path="/minutely" element={<WeatherData data={data?.timelines?.minutely} type={"Minutely"} />} />
+            </Routes>
           </div>
         ) : <div>No Results</div>}
-        <Routes>
-          <Route path="/" element={<></>} />
-          <Route path="/daily" element={<WeatherData data={data?.timelines?.daily} type={"Daily"} />} />
-          <Route path="/hourly" element={<WeatherData data={data?.timelines?.hourly} type={"Hourly"} />} />
-          <Route path="/minutely" element={<WeatherData data={data?.timelines?.minutely} type={"Minutely"} />} />
-        </Routes>
       </div>
     </BrowserRouter>
   )
