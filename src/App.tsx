@@ -38,16 +38,16 @@ function App() {
       {isSuccess ? (
         <div>
           <h2>Weather for {data?.location?.name}</h2>
-          <div>
-            <div>
+          <div className="row">
+            <div className="column">
               <p>{(new Date(data?.timelines?.hourly[0]?.time)).toString()}</p>
               <p>{data?.timelines?.hourly[0]?.values?.temperature} Degrees Celcius</p>
             </div>
-            <div>
+            <div className="column">
               <p>{(new Date(data?.timelines?.hourly[1]?.time)).toString()}</p>
               <p>{data?.timelines?.hourly[1]?.values?.temperature} Degrees Celcius</p>
             </div>
-            <div>
+            <div className="column">
               <p>{(new Date(data?.timelines?.hourly[2]?.time)).toString()}</p>
               <p>{data?.timelines?.hourly[2]?.values?.temperature} Degrees Celcius</p>
             </div>
