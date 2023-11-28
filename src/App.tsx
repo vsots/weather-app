@@ -35,7 +35,13 @@ function App() {
           <button>Search</button>
         </form>
       </div>
-      {isSuccess ? <div>{data?.timelines?.daily[0]?.time}</div> : <div>No Results</div>}
+      {isSuccess ? (
+        <div>
+          <p>{data?.location?.name}</p>
+          <p>{data?.timelines?.minutely[0]?.time}</p>
+          <p>{data?.timelines?.minutely[0]?.values?.temperature} Degrees Celcius</p>
+        </div>
+      ) : <div>No Results</div>}
     </>
   )
 }
