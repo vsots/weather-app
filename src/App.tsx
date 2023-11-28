@@ -38,7 +38,7 @@ function App() {
       {isSuccess ? (
         <div>
           <p>{data?.location?.name}</p>
-          <p>{data?.timelines?.minutely[0]?.time}</p>
+          <p>{(new Date(data?.timelines?.minutely[0]?.time)).toString()}</p>
           <p>{data?.timelines?.minutely[0]?.values?.temperature} Degrees Celcius</p>
         </div>
       ) : <div>No Results</div>}
