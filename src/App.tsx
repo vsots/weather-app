@@ -39,10 +39,13 @@ function App() {
         <div>
           <h2>Weather for {data?.location?.name}</h2>
           <div className="row">
-            <div className="column">
-              <p>{(new Date(data?.timelines?.hourly[0]?.time)).toString()}</p>
-              <p>{data?.timelines?.hourly[0]?.values?.temperature} Degrees Celcius</p>
-            </div>
+            {data?.timelines?.hourly?.map((item) => (
+              <div className="column">
+                <p>{(new Date(item?.time)).toString()}</p>
+                <p>{item?.values?.temperature} Degrees Celcius</p>
+              </div>
+            ))}
+            
             <div className="column">
               <p>{(new Date(data?.timelines?.hourly[1]?.time)).toString()}</p>
               <p>{data?.timelines?.hourly[1]?.values?.temperature} Degrees Celcius</p>
