@@ -46,9 +46,10 @@ function App() {
           </div>
         ) : <div>No Results</div>}
         <Routes>
-          <Route path="/daily" element={<WeatherData data={data?.timelines?.daily}/>} />
-          <Route path="/hourly" element={<WeatherData data={data?.timelines?.hourly}/>} />
-          <Route path="/minutely" element={<WeatherData data={data?.timelines?.minutely}/>} />
+          <Route path="/" element={<></>} />
+          <Route path="/daily" element={<WeatherData data={data?.timelines?.daily} type={"Daily"} />} />
+          <Route path="/hourly" element={<WeatherData data={data?.timelines?.hourly} type={"Hourly"} />} />
+          <Route path="/minutely" element={<WeatherData data={data?.timelines?.minutely} type={"Minutely"} />} />
         </Routes>
       </div>
     </BrowserRouter>
