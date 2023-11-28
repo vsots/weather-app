@@ -12,6 +12,8 @@ function App() {
     queryFn: fetchWeather
   });
 
+  console.log(data)
+
   return (
     <>
       <div className="input">
@@ -39,14 +41,13 @@ function App() {
         <div>
           <h2>Weather for {data?.location?.name}</h2>
           <div className="row">
-            {data?.timelines?.hourly?.map((item, index) => (
-              <div className="column" key={item?.time ?? index}>
-                <p>{(item?.time ? new Date(item.time) : new Date()).toString()}</p>
-                <p>{item?.values?.temperature} Degrees Celcius</p>
+            {data?.timelines?.daily?.map((item) => (
+              <div className="column" key={item.time}>
+                <p>{(new Date(item.time)).toString()}</p>
+                <p>{item?.values?.temperatureAvg} Degrees Celcius</p>
               </div>
             ))}
           </div>
-          
         </div>
       ) : <div>No Results</div>}
     </>
