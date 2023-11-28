@@ -37,9 +37,22 @@ function App() {
       </div>
       {isSuccess ? (
         <div>
-          <p>{data?.location?.name}</p>
-          <p>{(new Date(data?.timelines?.minutely[0]?.time)).toString()}</p>
-          <p>{data?.timelines?.minutely[0]?.values?.temperature} Degrees Celcius</p>
+          <h2>Weather for {data?.location?.name}</h2>
+          <div>
+            <div>
+              <p>{(new Date(data?.timelines?.hourly[0]?.time)).toString()}</p>
+              <p>{data?.timelines?.hourly[0]?.values?.temperature} Degrees Celcius</p>
+            </div>
+            <div>
+              <p>{(new Date(data?.timelines?.hourly[1]?.time)).toString()}</p>
+              <p>{data?.timelines?.hourly[1]?.values?.temperature} Degrees Celcius</p>
+            </div>
+            <div>
+              <p>{(new Date(data?.timelines?.hourly[2]?.time)).toString()}</p>
+              <p>{data?.timelines?.hourly[2]?.values?.temperature} Degrees Celcius</p>
+            </div>
+          </div>
+          
         </div>
       ) : <div>No Results</div>}
     </>
