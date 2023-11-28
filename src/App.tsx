@@ -39,21 +39,12 @@ function App() {
         <div>
           <h2>Weather for {data?.location?.name}</h2>
           <div className="row">
-            {data?.timelines?.hourly?.map((item) => (
-              <div className="column">
-                <p>{(new Date(item?.time)).toString()}</p>
+            {data?.timelines?.hourly?.map((item, index) => (
+              <div className="column" key={item?.time ?? index}>
+                <p>{(item?.time ? new Date(item.time) : new Date()).toString()}</p>
                 <p>{item?.values?.temperature} Degrees Celcius</p>
               </div>
             ))}
-            
-            <div className="column">
-              <p>{(new Date(data?.timelines?.hourly[1]?.time)).toString()}</p>
-              <p>{data?.timelines?.hourly[1]?.values?.temperature} Degrees Celcius</p>
-            </div>
-            <div className="column">
-              <p>{(new Date(data?.timelines?.hourly[2]?.time)).toString()}</p>
-              <p>{data?.timelines?.hourly[2]?.values?.temperature} Degrees Celcius</p>
-            </div>
           </div>
           
         </div>
