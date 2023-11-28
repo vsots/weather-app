@@ -41,12 +41,16 @@ function App() {
         <div>
           <h2>Weather for {data?.location?.name}</h2>
           <div className="row">
-            {data?.timelines?.daily?.map((item) => (
-              <div className="column" key={item.time}>
-                <p>{(new Date(item.time)).toString()}</p>
-                <p>{item?.values?.temperatureAvg} Degrees Celcius</p>
-              </div>
-            ))}
+            {data?.timelines?.daily?.map((item) => {
+              const date = new Date(item.time).toString().split(' ');
+              return (
+                <div className="column" key={item.time}>
+                  <p>{date.slice(0, 4).join(' ')}</p>
+                  <p>{date[4]} {date.slice(6).join(' ')}</p>
+                  <p>{item.values.temperatureAvg} Degrees Celcius</p>
+                </div>
+              )
+            })}
           </div>
         </div>
       ) : <div>No Results</div>}
