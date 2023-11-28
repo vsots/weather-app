@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { Link, BrowserRouter, Routes, Route } from "react-router-dom";
 import { useQuery } from '@tanstack/react-query';
 import fetchWeather from './fetchWeather';
+import WeatherData from './WeatherData';
 
 import './App.css'
 
@@ -12,10 +14,8 @@ function App() {
     queryFn: fetchWeather
   });
 
-  console.log(data)
-
   return (
-    <>
+    <BrowserRouter>
       <div className="input">
         <h1>Find Your Weather</h1>
         <form
@@ -36,25 +36,22 @@ function App() {
           </label>
           <button>Search</button>
         </form>
-      </div>
-      {isSuccess ? (
-        <div>
-          <h2>Weather for {data?.location?.name}</h2>
-          <div className="row">
-            {data?.timelines?.daily?.map((item) => {
-              const date = new Date(item.time).toString().split(' ');
-              return (
-                <div className="column" key={item.time}>
-                  <p>{date.slice(0, 4).join(' ')}</p>
-                  <p>{date[4]} {date.slice(6).join(' ')}</p>
-                  <p>{item.values.temperatureAvg} Degrees Celcius</p>
-                </div>
-              )
-            })}
+        {isSuccess ? (
+          <div>
+            <h2>Weather for {data?.location?.name}</h2>
+            <Link to="/"> Clear </Link>
+            <Link to="/daily"> Daily </Link>
+            <Link to="/hourly"> Hourly </Link>
+            <Link to="/minutely"> Minutely </Link>
           </div>
-        </div>
-      ) : <div>No Results</div>}
-    </>
+        ) : <div>No Results</div>}
+        <Routes>
+          <Route path="/daily" element={<WeatherData data={data?.timelines?.daily}/>} />
+          <Route path="/hourly" element={<WeatherData data={data?.timelines?.hourly}/>} />
+          <Route path="/minutely" element={<WeatherData data={data?.timelines?.minutely}/>} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   )
 }
 
