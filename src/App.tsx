@@ -3,6 +3,7 @@ import { Link, BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useQuery } from '@tanstack/react-query';
 import fetchWeather from './fetchWeather';
 import WeatherData from './WeatherData';
+import { HourlyMinutely, Daily, DailyValues, HourlyMinutelyValues } from './types';
 
 import './App.css'
 
@@ -13,6 +14,24 @@ function App() {
     queryKey: ["search", requestParams], 
     queryFn: fetchWeather
   });
+
+  const daily: Daily[] = data?.timelines?.daily?.map((item) => { 
+    const time: string = item.time
+    const values: DailyValues = { temperatureMax: item.values.temperatureMax }
+    return {time, values}
+  }) ?? []
+
+  const hourly: HourlyMinutely[] = data?.timelines?.hourly?.map((item) => { 
+    const time: string = item.time
+    const values: HourlyMinutelyValues = { temperature: item.values.temperature }
+    return {time, values}
+  }) ?? []
+
+  const minutely: HourlyMinutely[] = data?.timelines?.minutely?.map((item) => { 
+    const time: string = item.time
+    const values: HourlyMinutelyValues = { temperature: item.values.temperature }
+    return {time, values}
+  }) ?? []
 
   return (
     <BrowserRouter>
@@ -45,9 +64,9 @@ function App() {
             <Routes>
               <Route path="/">
                 <Route index element={<Navigate to="/daily" />} />
-                <Route path="daily" element={<WeatherData data={data?.timelines?.daily} type={"Daily"} />} />
-                <Route path="hourly" element={<WeatherData data={data?.timelines?.hourly} type={"Hourly"} />} />
-                <Route path="minutely" element={<WeatherData data={data?.timelines?.minutely} type={"Minutely"} />} />
+                <Route path="daily" element={<WeatherData data={daily} type={"Daily"} />} />
+                <Route path="hourly" element={<WeatherData data={hourly} type={"Hourly"} />} />
+                <Route path="minutely" element={<WeatherData data={minutely} type={"Minutely"} />} />
               </Route>  
             </Routes>
           </div>

@@ -1,4 +1,6 @@
-function WeatherData({ data, type }) {
+import { WeatherDataProps } from "./types";
+
+function WeatherData({ type, data }: WeatherDataProps) {
   return (
     <>
       {
@@ -9,11 +11,12 @@ function WeatherData({ data, type }) {
               {
                 data.slice(0, 6).map((item) => {
                   const date = new Date(item.time).toString().split(' ');
+                  console.log(item)
                   return (
                     <div className="column" key={item.time}>
                       <p>{date.slice(0, 4).join(' ')}</p>
                       <p>{date[4]} {date.slice(6).join(' ')}</p>
-                      <p>{item.values.temperature ?? item.values.temperatureAvg} Degrees Celcius</p>
+                      <p>{item.values.temperature ?? item.values.temperatureMax} Degrees Celcius</p>
                     </div>
                   )
                 })
