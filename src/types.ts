@@ -1,3 +1,5 @@
+type TimeType = "Daily" | "Hourly" | "Minutely"
+
 export interface HourlyMinutelyValues {
   temperature: number
 }
@@ -17,6 +19,6 @@ export interface Daily {
 }
 
 export interface WeatherDataProps {
-  type: string
+  type: TimeType
   data: Daily[] | HourlyMinutely[]
 }

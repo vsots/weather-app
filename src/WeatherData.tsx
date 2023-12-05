@@ -11,7 +11,6 @@ function WeatherData({ type, data }: WeatherDataProps) {
               {
                 data.slice(0, 6).map((item) => {
                   const date = new Date(item.time).toString().split(' ');
-                  console.log(item)
                   return (
                     <div className="column" key={item.time}>
                       <p>{date.slice(0, 4).join(' ')}</p>
