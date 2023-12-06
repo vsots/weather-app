@@ -9,7 +9,7 @@ function WeatherData({ type, data }: WeatherDataProps) {
             <h3>Your {type} Forecast</h3>
             <div className="row">
               {
-                data.slice(0, 6).map((item) => {
+                data.map((item) => {
                   const date = new Date(item.time).toString().split(' ');
                   return (
                     <div className="column" key={item.time}>

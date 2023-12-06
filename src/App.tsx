@@ -55,9 +55,10 @@ function App() {
           </label>
           <button>Search</button>
         </form>
+      </div>
         {isSuccess ? (
-          <div>
-            <h2>Weather for {data?.location?.name}</h2>
+          <div className="results">
+            <h2 id="weather-loc">Weather for {data?.location?.name}</h2>
             <Link to="/daily"> Daily </Link>
             <Link to="/hourly"> Hourly </Link>
             <Link to="/minutely"> Minutely </Link>
@@ -71,7 +72,6 @@ function App() {
             </Routes>
           </div>
         ) : <div>No Results</div>}
-      </div>
     </BrowserRouter>
   )
 }
