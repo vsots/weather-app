@@ -57,11 +57,13 @@ function App() {
         </form>
       </div>
         {isSuccess ? (
-          <div className="results">
-            <h2 id="weather-loc">Weather for {data?.location?.name}</h2>
-            <Link to="/daily"> Daily </Link>
-            <Link to="/hourly"> Hourly </Link>
-            <Link to="/minutely"> Minutely </Link>
+          <div>
+            <div className="loc-and-links">
+              <h2>Weather for {data?.location?.name}</h2>
+              <Link to="/daily"> Daily </Link>
+              <Link to="/hourly"> Hourly </Link>
+              <Link to="/minutely"> Minutely </Link>
+            </div>
             <Routes>
               <Route path="/">
                 <Route index element={<Navigate to="/daily" />} />
