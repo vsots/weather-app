@@ -1,45 +1,27 @@
-#root {
-  top: 0;
-  left: 0;
-}
-
 .input {
-  top: 0;
-  left: 35%;
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  text-align: center;
 }
 
 .loc-and-links {
-  position: relative;
-  margin-top: -15%;
-  left: 50%;
   text-align: center;
 }
 
 h3 {
-  position: relative;
-  left: 50%;
   text-align: center;
 }
 
-.row {
-  position: absolute;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+.forecast {
+  margin-top: 4rem;
 }
 
-.column {
+.weather-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 20vw);
+  grid-template-rows: repeat(12, 25vh);
+}
+
+.weather-item {
   display: flex;
   flex-direction: column;
-  padding: 10px;
-}
-
-#no-results {
-  position: absolute;
-  left: 50%;
-  top: 35%;
+  align-items: center;
 }
