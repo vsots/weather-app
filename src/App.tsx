@@ -73,7 +73,7 @@ function App() {
               </Route>  
             </Routes>
           </div>
-        ) : <div id="no-results"><p>No Results</p></div>}
+        ) : <h3>No Results</h3>}
     </BrowserRouter>
   )
 }
