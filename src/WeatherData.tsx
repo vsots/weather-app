@@ -6,7 +6,7 @@ function WeatherData({ type, data }: WeatherDataProps) {
       {
         data ? ( 
           <div className="forecast">
-            <h3>Your {type} Forecast</h3>
+            <h3>Your {type} Forecast {new Date(data[0].time).toString().split(' ').slice(6).join(' ')}</h3>
             <div className="weather-grid">
               {
                 data.map((item) => {
@@ -14,7 +14,7 @@ function WeatherData({ type, data }: WeatherDataProps) {
                   return (
                     <div className="weather-item" key={item.time}>
                       <p>{date.slice(0, 4).join(' ')}</p>
-                      <p>{date[4]} {date.slice(6).join(' ')}</p>
+                      <p>{date[4]}</p>
                       <p>{item.values.temperature ?? item.values.temperatureMax} Degrees Celcius</p>
                     </div>
                   )
