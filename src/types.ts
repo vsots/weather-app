@@ -11,6 +11,7 @@ export interface HourlyMinutely {
 
 export interface DailyValues {
   temperatureMax: number
+  temperatureMin: number
 }
 
 export interface Daily {

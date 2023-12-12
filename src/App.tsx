@@ -17,7 +17,7 @@ function App() {
 
   const daily: Daily[] = data?.timelines?.daily?.map((item) => { 
     const time: string = item.time
-    const values: DailyValues = { temperatureMax: item.values.temperatureMax }
+    const values: DailyValues = { temperatureMax: item.values.temperatureMax, temperatureMin: item.values.temperatureMin }
     return {time, values}
   }) ?? []
 
