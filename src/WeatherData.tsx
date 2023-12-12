@@ -16,7 +16,7 @@ function WeatherData({ type, data }: WeatherDataProps) {
                     <div className="weather-item" key={item.time}>
                       <p>{date.slice(0, 4).join(' ')}</p>
                       <p>{type !== "Daily" ? date[4] : "Max temp: " + item.values.temperatureMax + " \u00B0C"}</p>
-                      <p>{"Temp: " + item.values.temperature ?? "Min temp: " + item.values.temperatureMin}{" \u00B0C"}</p>
+                      <p>{item.values.temperature ?? "Min temp: " + item.values.temperatureMin}{" \u00B0C"}</p>
                     </div>
                   )
                 })
