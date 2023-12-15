@@ -67,8 +67,8 @@ function App() {
             <Routes>
               <Route path="/">
                 <Route index element={<Navigate to="/daily" />} />
-                <Route path="daily" element={<WeatherData data={daily} type={"Daily"} />} />
-                <Route path="hourly" element={<WeatherData data={hourly} type={"Hourly"} />} />
+                <Route path="daily" element={<WeatherData data={daily} type={"Daily"} currentWeather={minutely[0]} />} />
+                <Route path="hourly" element={<WeatherData data={hourly} type={"Hourly"} currentWeather={minutely[0]} />} />
                 <Route path="minutely" element={<WeatherData data={minutely} type={"Minutely"} />} />
               </Route>  
             </Routes>
