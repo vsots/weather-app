@@ -21,5 +21,6 @@ export interface Daily {
 
 export interface WeatherDataProps {
   type: TimeType
-  data: Daily[] | HourlyMinutely[]
+  data: Daily[] | HourlyMinutely[],
+  currentWeather?: HourlyMinutely
 }

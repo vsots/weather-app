@@ -1,12 +1,21 @@
-import { WeatherDataProps } from "./types";
+import { HourlyMinutely, WeatherDataProps } from "./types";
 
-function WeatherData({ type, data }: WeatherDataProps) {
+function WeatherData({ type, data, currentWeather }: WeatherDataProps) {
   const timezone: string | null = data && type !== "Daily" ? new Date(data[0].time).toString().split(' ').slice(6).join(' ') : null
+  const weatherNow: HourlyMinutely = currentWeather ?? (data[0] as HourlyMinutely);
+  console.log(weatherNow);
+  const weatherNowDate: string[] = new Date(weatherNow.time).toString().split(' ');
   return (
     <>
       {
         data ? ( 
           <div className="forecast">
+            <h3>Current Weather</h3>
+            <div className="weather-item">
+              <p>{weatherNowDate.slice(0, 4).join(' ')}</p>
+              <p>{weatherNowDate[4]} {weatherNowDate.slice(6).join(' ')}</p>
+              <p>{weatherNow.values.temperature}{" \u00B0C"}</p>
+            </div>
             <h3>Your {type} Forecast {timezone}</h3>
             <div className="weather-grid">
               {
