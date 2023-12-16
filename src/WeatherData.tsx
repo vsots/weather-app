@@ -3,7 +3,6 @@ import { HourlyMinutely, WeatherDataProps } from "./types";
 function WeatherData({ type, data, currentWeather }: WeatherDataProps) {
   const timezone: string | null = data && type !== "Daily" ? new Date(data[0].time).toString().split(' ').slice(6).join(' ') : null
   const weatherNow: HourlyMinutely = currentWeather ?? (data[0] as HourlyMinutely);
-  console.log(weatherNow);
   const weatherNowDate: string[] = new Date(weatherNow.time).toString().split(' ');
   return (
     <>
